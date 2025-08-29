@@ -11,5 +11,14 @@ average = total/5
 print("The total is", total)
 print("The average is", average)
 
-name = input("Employee, what is your name?")
-wages
+if average <= 100 and average >= 90:
+    print("Grade A")
+elif average < 90 and average >=80:
+    print("The Grade is B")
+elif average <80 and average >=70:
+    print("The Grade is C")
+elif average <70 and average >=60:
+    print("The Grade is D")
+else:
+    print("The Grade is F")
+
