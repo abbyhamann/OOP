@@ -10,7 +10,7 @@ while True:
     choice = input("Please enter your choice")
     if choice == "1":
         key = input("Please enter the project id")
-        ptitle = input("Please enter the project title")
+        title = input("Please enter the project title")
         managers = input("Please enter a manager name")
         manList = [managers]
         moreman = input("Are there more managers? (Enter Y/N)")
@@ -33,45 +33,38 @@ while True:
         while moremem == "Y":
             techList.append(input("Please enter a member"))
             memberList = input("Are there more members? (Enter Y/N)")
-
-
         projects.update({key:{
-            "title": ptitle,
-            "managers": manList,
+            "title": title,
+            "manList": manList,
             "start_date":start_date,
             "end_date":end_date,
             "sponsor":sponsor,
             "budget": budget,
-            "tech":techList,
-            "member": memberList,
+            "techList":techList,
+            "memberList": memberList,
                         }})
+
     elif choice == "2":
         key = input("Please enter the project id you'd like to close")
         del projects[key]
+
     elif choice == "3":
         key = input("Please enter the project id you'd like to update")
-        element = input("Please enter the element you'd like to update. Options: title, managers, start_date, end_date, sponsor, budget, tech, member")
-        name = input("Please enter the name of the student")
-        lab1 = int(input("Please enter the points the student earned for Lab 1"))
-        lab2 = int(input("Please enter the points the student earned for Lab 2"))
-        lab3 = int(input("Please enter the points the student earned for Lab 3"))
-        lab4 = int(input("Please enter the points the student earned for Lab 4"))
-        lab5 = int(input("Please enter the points the student earned for Lab 5"))
-        total = lab1 + lab2 + lab3 + lab4 + lab5
-        percent = total / 50 * 100
-        average = total / 5
-        myStudents.update({key:{
-            "name":name,
-            "lab1":lab1,
-            "lab2": lab2,
-            "lab3": lab3,
-            "lab4": lab4,
-            "lab5": lab5,
-            "total": total,
-            "percent": percent,
-            "average":average
-        }})
+        element = input("Please enter the element you'd like to update. Options: title, manList, start_date, end_date, sponsor, budget, techList, memList")
+        if element == "managers" or element == "tech" or element == "member":
+            update = input("Would you like to add or remove an element from this list?")
+            if update == "add":
+                projects[key][element].append(input("Please enter what you'd like to add"))
+            else:
+                projects[key][element].remove(input("Please enter what you'd like to remove"))
+        else:
+            projects[key][element] = input("Please enter the new value")
+
     elif choice == "4":
-        print(myStudents)
+        print(projects[input("Please enter the project id you'd like to print")])
+
     elif choice == "5":
+        print(projects)
+
+    elif choice == "6":
         break
