@@ -1,0 +1,44 @@
+class Product:
+  def __init__(self):
+    self.pid=""
+    self.pname=""
+    self.price=0.0
+    self.description=""
+  def getproductdetails(self):
+      self.pid =input("Enter the product id")
+      self.pname=input("Enter the product name")
+      self.price=input("Enter the price")
+      self.description=input("Enter the product description")
+  def displayproductinfo(self):
+      print("product id:", self.pid)
+      print("product name:", self.pname)
+      print("product price:", self.price)
+      print("product description:", self.description)
+inp = "1"
+while 1:
+    print("1. Create a product object")
+    print("2. Get info for the product")
+    print("3. Display the product")
+    print("4. Write the product into a file")
+    print("5. Read from the file")
+    print("6. Exit")
+    inp = input("Enter your choice")
+
+    if inp == "1":
+        product_obj = Product()
+    if inp == "2":
+        product_obj.getproductdetails()
+    if inp == "3":
+        product_obj.displayproductinfo()
+    if inp == "4":
+        f1 = open("product_inv.dat", "ab")
+        pickle.dump(product_obj, f1)
+        f1.close()
+    if inp == "5":
+        f2 = open("product_inv.dat", "rb")
+        while 1:
+            try:
+                data = pickle.load(f2)
+                data.displayproductinfo()
+            except:
+                break
