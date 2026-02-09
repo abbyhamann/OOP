@@ -1,0 +1,33 @@
+package comHamann;
+import java.util.Scanner;
+class Calculate {
+	public float add(float a, float b) {
+		float z = a + b;
+		return z;
+	}
+	public float subtract(float a, float b) {
+		float z = a - b;
+		return z;
+	}
+	public float multiply(float a, float b) {
+		float z = a * b;
+		return z;
+	}
+	public float divide(float a, float b) {
+		float z = a / b;
+		return z;
+}
+public class Calculator {
+
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		Calculate calc= new Calculate();
+		while (True) {
+			
+		}
+		System.out.println("Enter your number: ");
+		float num1 = scnr.nextFloat();
+
+	}
+
+}
