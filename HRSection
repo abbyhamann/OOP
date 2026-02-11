@@ -1,0 +1,35 @@
+package comHamann;
+import java.util.Scanner;
+class HRSection1 {
+	String employee_name;
+	int employee_id;
+	int gross_salary;
+	float net_salary;
+	HRSection1(String employee_name, int employee_id, int gross_salary){
+		this.employee_name = employee_name;
+	}
+	private float salcalculation(float fed_tax, float state_tax, float local_tax) {
+		this.net_salary = this.gross_salary - (fed_tax + state_tax + local_tax);
+		return this.net_salary;
+	}
+	public void displaySal(float fed_tax, float state_tax, float local_tax) {
+		System.out.print(salcalculation(fed_tax, state_tax, local_tax));
+	}
+	
+}
+
+
+public class HRSection {
+
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		System.out.println("Enter the employee name, id, and gross salary, hitting enter after each one");
+		String name = scnr.nextLine();
+		int id = scnr.nextInt();
+		int grossSal = scnr.nextInt();
+		HRSection1 sal1 = new HRSection1(name, id, grossSal);
+		sal1.displaySal(float 300.0, float 100, float 50);
+
+	}
+
+}
